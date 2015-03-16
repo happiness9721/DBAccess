@@ -11,12 +11,12 @@ Pod::Spec.new do |s|
   s.name             = "DBAccess"
   s.version          = "0.1.0"
   s.summary          = "It's a ORM tool for iOS developer that use sqlite more easily."
-  #s.description      = <<-DESC
-                       An optional longer description of DBAccess
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
+#  s.description      = <<-DESC
+#                       An optional longer description of DBAccess
+#
+#                       * Markdown format.
+#                       * Don't worry about the indent, we strip it!
+#                       DESC
   s.homepage         = "https://github.com/<GITHUB_USERNAME>/DBAccess"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
