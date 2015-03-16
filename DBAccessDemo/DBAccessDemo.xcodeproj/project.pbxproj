@@ -21,6 +21,7 @@
 		A95C2BE71AB79B9000823D86 /* DBTableInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C2BDE1AB79B9000823D86 /* DBTableInfo.m */; };
 		A95C2BE81AB79B9000823D86 /* NSDate+DateString.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C2BE01AB79B9000823D86 /* NSDate+DateString.m */; };
 		A95C2BE91AB79B9000823D86 /* NSString+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C2BE21AB79B9000823D86 /* NSString+Date.m */; };
+		A9CC690B1AB7A2FE00A39154 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CC690A1AB7A2FE00A39154 /* libsqlite3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A95C2BE01AB79B9000823D86 /* NSDate+DateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateString.m"; path = "../Pod/Classes/NSDate+DateString.m"; sourceTree = "<group>"; };
 		A95C2BE11AB79B9000823D86 /* NSString+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Date.h"; path = "../Pod/Classes/NSString+Date.h"; sourceTree = "<group>"; };
 		A95C2BE21AB79B9000823D86 /* NSString+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Date.m"; path = "../Pod/Classes/NSString+Date.m"; sourceTree = "<group>"; };
+		A9CC690A1AB7A2FE00A39154 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CC690B1AB7A2FE00A39154 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +87,7 @@
 		A95C2BA11AB79B5000823D86 = {
 			isa = PBXGroup;
 			children = (
+				A9CC690A1AB7A2FE00A39154 /* libsqlite3.0.dylib */,
 				A95C2BD41AB79B7F00823D86 /* DBAccess */,
 				A95C2BAC1AB79B5000823D86 /* DBAccessDemo */,
 				A95C2BC61AB79B5000823D86 /* DBAccessDemoTests */,
@@ -347,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -383,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -396,6 +400,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DBAccessDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -406,6 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DBAccessDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -464,6 +470,7 @@
 				A95C2BCF1AB79B5000823D86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A95C2BD01AB79B5000823D86 /* Build configuration list for PBXNativeTarget "DBAccessDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +479,7 @@
 				A95C2BD21AB79B5000823D86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

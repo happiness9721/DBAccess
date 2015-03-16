@@ -112,7 +112,7 @@
 
 - (sqlite3_stmt *)executeSQL:(NSString *)sql
 {
-    sqlite3_stmt *statement;
+    sqlite3_stmt *statement = nil;
     @synchronized(self)
     {
         if (_database)

@@ -88,11 +88,11 @@
     }
     if (_limitValue)
     {
-        sql = [sql stringByAppendingFormat:@" LIMIT %ld", _limitValue];
+        sql = [sql stringByAppendingFormat:@" LIMIT %ld", (unsigned long)_limitValue];
     }
     if (_offsetValue)
     {
-        sql = [sql stringByAppendingFormat:@" OFFSET %ld", _offsetValue];
+        sql = [sql stringByAppendingFormat:@" OFFSET %ld", (unsigned long)_offsetValue];
     }
     return sql;
 }
