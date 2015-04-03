@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DBAccess"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "It's a ORM tool for iOS developer that use sqlite more easily."
   s.homepage         = "https://github.com/happiness9721/DBAccess"
   s.license          = 'MIT'

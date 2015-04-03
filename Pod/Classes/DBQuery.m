@@ -97,6 +97,43 @@
     return sql;
 }
 
+- (id)makeObjectWithStmt:(sqlite3_stmt*)statement
+{
+    id newObject = [_queryClassValue alloc];
+    NSInteger count = sqlite3_column_count(statement);
+    for (int index = 0; index < count; index++)
+    {
+        id columnValue;
+        NSString *columnName = [NSString stringWithCString:sqlite3_column_name(statement, index) encoding:NSUTF8StringEncoding];
+        switch (sqlite3_column_type(statement, index))
+        {
+            case SQLITE_INTEGER:
+                columnValue = [NSNumber numberWithInteger:sqlite3_column_int(statement, index)];
+                [newObject setValue:columnValue forKey:columnName];
+                break;
+            case SQLITE_FLOAT:
+                columnValue = [NSNumber numberWithDouble:sqlite3_column_double(statement, index)];
+                [newObject setValue:columnValue forKey:columnName];
+                break;
+            case SQLITE_BLOB:
+            {
+                const void *ptr = sqlite3_column_blob(statement, index);
+                int size = sqlite3_column_bytes(statement, index);
+                columnValue = [[NSData alloc] initWithBytes:ptr length:size];
+                [newObject setValue:columnValue forKey:columnName];
+            }
+                break;
+            case SQLITE_TEXT:
+                columnValue = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, index)];
+                [newObject setValue:columnValue forKey:columnName];
+                break;
+            default:
+                break;
+        }
+    }
+    return newObject;
+}
+
 - (NSDictionary *)groupBy:(NSString *)group
 {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
@@ -106,17 +143,7 @@
     
     while(sqlite3_step(statement) == SQLITE_ROW)
     {
-        id newObject = [_queryClassValue alloc];
-        NSInteger count = sqlite3_column_count(statement);
-        for (int index = 0; index < count; index++)
-        {
-            NSString *columnValue = sqlite3_column_text(statement, index) ? [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, index)] : nil;
-            if (columnValue)
-            {
-                NSString *columnName = [NSString stringWithCString:sqlite3_column_name(statement, index) encoding:NSUTF8StringEncoding];
-                [newObject setValue:columnValue forKey:columnName];
-            }
-        }
+        id newObject = [self makeObjectWithStmt:statement];
         NSString *groupName = [newObject valueForKey:group];
         NSMutableArray *dataSet = [dictionary objectForKey:groupName];
         if (!dataSet)
@@ -142,17 +169,7 @@
 
     while(sqlite3_step(statement) == SQLITE_ROW)
     {
-        id newObject = [_queryClassValue alloc];
-        NSInteger count = sqlite3_column_count(statement);
-        for (int index = 0; index < count; index++)
-        {
-            NSString *columnValue = sqlite3_column_text(statement, index) ? [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, index)] : nil;
-            if (columnValue)
-            {
-                NSString *columnName = [NSString stringWithCString:sqlite3_column_name(statement, index) encoding:NSUTF8StringEncoding];
-                [newObject setValue:columnValue forKey:columnName];
-            }
-        }
+        id newObject = [self makeObjectWithStmt:statement];
         [dataSet addObject:newObject];
     }
     [_dbAccess finishStatement:statement];
